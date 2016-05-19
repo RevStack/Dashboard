@@ -22,7 +22,7 @@ bower
 ``` bash
 
 git clone https://github.com/RevStack/Dashboard.git
-mv ./revstack-dashboard  my-project
+mv ./dashboard  my-project
 cd my-project
 
 ```
@@ -51,7 +51,7 @@ $Rest.port = 80;
 ```
 
 ## Google API Keys
-in the same app.js file, provide a google api keys
+in the same app.js file, provide google api keys
 
 ```js
 
