@@ -1,4 +1,4 @@
-Mobile First Dashboard
+RevStack Dashboard
 ===========================
 
 Installs a default revstack.io dashboard app
@@ -43,6 +43,10 @@ open app.js under ./public/app/app.js and edit the rest endpoint
 
 ```js
 
+$Rest.protocol = 'http';
+$Rest.host = '';
+$Rest.path = '';
+$Rest.port = 80;
 
 ```
 
@@ -51,7 +55,8 @@ in the same app.js file, provide a google api keys
 
 ```js
 
-
+app.SERVER_KEY='';
+app.MAP_KEY='';
 
 ```
 
