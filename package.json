@@ -1,12 +1,12 @@
 {
-  "name": "mobile-first-dashboard",
-  "description": "mobile first dashboard built over polymer and elliptical",
+  "name": "revstack-dashboard",
+  "description": "RevStack mobile first dashboard",
   "version": "1.0.0",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ellipticaljs/mobile-first-dashboard.git"
+    "url": "https://github.com/RevStack/Dashboard.git"
   },
   "dependencies":{
     "elliptical-sass": "git+https://github.com/ellipticaljs/sass.git",
