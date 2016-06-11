@@ -34,6 +34,7 @@ cd my-project
 
 npm install
 gulp init
+gulp app-build
 bower install
 
 ```
@@ -65,7 +66,7 @@ app.MAP_KEY='';
 
 ``` bash
 
-gulp start-live-app
+gulp start-app
 
 ```
 

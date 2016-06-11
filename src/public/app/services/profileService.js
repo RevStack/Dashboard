@@ -1,60 +1,54 @@
+import container from '../dependencies/container';
 
-elliptical.module = (function (app) {
-    var Service = elliptical.Service;
-    var crypto=elliptical.crypto;
-    var container = app.container;
-    var $Rest=container.getType('$Rest');
+var Service = container.getType('Service');
+var crypto = container.getType('crypto');
+var $Rest = container.getType('$Rest');
+var $Cookie = container.getType('$Cookie');
+var notify = container.getType('Notify');
+var Event = container.getType('Event');
 
-    var Profile = Service.extend({
-        "@resource": 'Profile',
-        get: function(){
-            var $Cookie=container.getType('$Cookie');
-            return $Cookie.get('profile');
-        },
+class Profile extends Service {
+    static get() {
+        return $Cookie.get('profile');
+    }
 
-        login: function (params,callback) {
-            var notify=container.getType('Notify');
-            this.$provider.post(params,'Login',function(err,data){
-                if(!err){
-                    //success
-                    var token=crypto.getBase64Token(params.username,params.password);
-                    var $Cookie=container.getType('$Cookie');
-                    $Cookie.set('token',token);
-                    $Cookie.set('profile',data);
-                    var Location=container.getType('Location');
-                    var Event=container.getType('Event');
-                    Event.emit('app.login',data);
-                    notify.show('Login Successful');
-                    Location.href='/';
-                }else{
-                    //failure
-                    notify.show('Invalid Login');
-                }
-            });
-        },
-
-        logout:function(params,callback){
-            var $Cookie=container.getType('$Cookie');
-            $Cookie.delete('token');
-            $Cookie.delete('profile');
-            var Event=container.getType('Event');
-            Event.emit('app.logout',null);
-            if(callback){
-                callback(null,{message:'You have been logged out from your account...'});
+    static login(params, callback) {
+        this.$provider.post(params, 'Login', function (err, data) {
+            if (!err) {
+                //success
+                var token = crypto.getBase64Token(params.username, params.password);
+                var $Cookie = container.getType('$Cookie');
+                $Cookie.set('token', token);
+                $Cookie.set('profile', data);
+                var Location = container.getType('Location');
+                var Event = container.getType('Event');
+                Event.emit('app.login', data);
+                notify.show('Login Successful');
+                Location.href = '/';
+            } else {
+                //failure
+                notify.show('Invalid Login');
             }
-        },
+        });
+    }
 
-        authenticated:function(){
-            var $Cookie=container.getType('$Cookie');
-            var token=$Cookie.get('token');
-            var profile=$Cookie.get('profile');
-            return (token !==undefined && token) ? profile : null;
+    static logout(params, callback) {
+        $Cookie.delete('token');
+        $Cookie.delete('profile');
+        Event.emit('app.logout', null);
+        if (callback) {
+            callback(null, {message: 'You have been logged out from your account...'});
         }
+    }
 
-    }, {});
+    static authenticated() {
+        var $Cookie = container.getType('$Cookie');
+        var token = $Cookie.get('token');
+        var profile = $Cookie.get('profile');
+        return (token !== undefined && token) ? profile : null;
+    }
+}
 
+container.mapType('Profile', Profile, new $Rest());
 
-    container.mapType('Profile',Profile, new $Rest());
-
-    return app;
-})(elliptical.module);
+ 
