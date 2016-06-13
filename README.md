@@ -1,7 +1,7 @@
 RevStack Dashboard
 ===========================
 
-Installs a default revstack.io dashboard app
+Installs a default es20015 revstack.io dashboard app
 
 # Installation
 
@@ -40,7 +40,7 @@ bower install
 ```
 
 ## Configure Rest Endpoint
-open app.js under ./public/app/app.js and edit the rest endpoint
+open container.js under ./public/app/dependencies and edit the rest endpoint
 
 ```js
 
@@ -52,12 +52,12 @@ $Rest.port = 80;
 ```
 
 ## Google API Keys
-in the same app.js file, provide google api keys
+open keys.js under ./public/references, and provide google api keys
 
 ```js
 
-app.SERVER_KEY='';
-app.MAP_KEY='';
+SERVER_KEY='';
+MAP_KEY='';
 
 ```
 
