@@ -1,7 +1,7 @@
 RevStack Dashboard
 ===========================
 
-Installs a default es20015 revstack.io dashboard app
+Installs a default es2015 revstack.io dashboard app
 
 # Installation
 
