@@ -12,6 +12,7 @@ Installs a default es2015 revstack.io dashboard app
 
 node
 gulp
+babel
 bower
 
 ```
@@ -120,6 +121,9 @@ gulp db-list-view --name <view> --folder <viewFolder> --class <className> --icon
 # grid view
 gulp db-grid-view --name <view> --folder <viewFolder> --class <className> --icon <icon>
 
+# detail view
+gulp db-detail-view --name <view> --folder <viewFolder> --class <className> --icon <icon>
+
 # service
 gulp db-service --class <className>
 
@@ -128,6 +132,9 @@ gulp db-provider --class <className>
 
 # binding
 gulp db-binding --name <name>
+
+# web component
+gulp web-component --tag <tag> --d <directory>
 
 
 ```
