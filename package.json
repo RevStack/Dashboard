@@ -1,12 +1,18 @@
 {
   "name": "revstack-dashboard",
   "description": "RevStack mobile first dashboard",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "author": "S. Francis",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/RevStack/Dashboard.git"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
   },
   "dependencies":{
     "elliptical-sass": "git+https://github.com/ellipticaljs/sass.git",
